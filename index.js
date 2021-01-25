@@ -85,3 +85,108 @@ promptUser()
   .catch(function (err) {
     console.error(err)
   })
+
+  //--------------------------------------------------------------\ Functions /---------------------------------------------------------------
+function promptUser () {
+  return inquirer.prompt([
+    {
+      type: 'text',
+      name: 'intro message',
+      message: "\x1b[95mWelcome to Readme GENERATOR!\x1b[39m" + "\x1b[36m\nAnswer the following questions, in order to create your new Readme File. \nIf you don't answer a question, a default value will be assigned.\nFor badges and MIT license, make sure you insert the correct Github name of your repo.\n>>>> Hit ENTER to get started <<<<\x1b[89m",
+      
+    },
+    {
+      type: 'input',
+      name: 'name',
+      message: "What's the name of your project?",             
+      default: 'Project Title'
+    },
+    {
+      type: 'input',
+      name: 'description',
+      message: 'Describe your project: ',       
+      default: 'Description of your project'
+    },
+    {
+      type: 'input',
+      name: 'installation',
+      message: 'How do you install your application?',
+      default: 'Installation steps'
+    },
+    {
+      type: 'input',
+      name: 'usage',
+      message: 'How do you use it?',
+      default: 'Usage of the app'
+    },
+    {
+      type: 'input',
+      name: 'test',
+      message: 'Add all the tests you did on this app',
+      default: 'None'
+    },
+    {
+      type: 'input',
+      name: 'version',
+      message: 'App version?',
+      default: 'v1.0.0'
+    }
+  ])
+  
+}
+
+function generateReadme (answers) {
+  return `# ${answers.name}
+   
+  ## Table of Content
+
+  * [Description](#description)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Test](#test)
+  * [Contributing](#contributing)
+  * [Badges](#badges)
+  * [License](#license)
+  * [Questions](#questions)
+
+  ## Description
+   ${answers.description} 
+
+  ## Installation
+   ${answers.installation}
+
+  ## Usage
+   ${answers.usage}
+
+  ## Test
+  ${answers.test}
+
+  ## Badges
+  ![Mike](https://img.shields.io/badge/version-${answers.version}-yellow) `
+}
+
+function generateLICENSE (fullname) {
+  return `
+  MIT License
+
+  Copyright (c) 2020 ${fullname}
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+  `
+}
