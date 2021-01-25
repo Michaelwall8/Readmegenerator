@@ -190,3 +190,28 @@ function generateLICENSE (fullname) {
   SOFTWARE.
   `
 }
+
+function generateBadges (username, repo, profileImg) {
+  return `
+  ![code size](https://img.shields.io/github/languages/code-size/${username}/${repo})
+  ![top lang](https://img.shields.io/github/languages/top/${username}/${repo})
+  ![last comit](https://img.shields.io/github/last-commit/${username}/${repo})
+  ![vulnera](https://img.shields.io/snyk/vulnerabilities/github/${username}/${repo})
+
+  ## License ![License](https://img.shields.io/github/license/${username}/${repo})
+  This project is under the MIT License.
+  
+  ## Contributing [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+  This project is under the Contributor Covenant.
+
+  ## Questions ![Social](https://img.shields.io/github/followers/${username}?style=social) 
+  ![Profile img](${profileImg})
+
+  E-mail: Hidden
+  `
+}
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------\  END  /---------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------
+
